@@ -36,15 +36,11 @@ echo "Setting dashboard to :666 with no admin/password..."
 bash -l # autocomplete
 
 # We have to create a site for all the below to work.
-( sudo wo site create --wp wordops )
+( sudo wo site create --html wordops )
 
 echo "Securing :666 with admin:password..."
 
 ( sudo wo secure --auth 'admin' 'password' ) # Simple username/password.
 ( sudo wo secure --port 666 ) # Set port to easy to remember 666.
-
-echo "Installing stacks..."
-
-( sudo wo stack install --all ) # Install all the stacks.
 
 echo "Done"
