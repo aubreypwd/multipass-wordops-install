@@ -30,6 +30,9 @@ echo "Installing WordOps..."
 # Yes, run bash wo in a sub-shell so it won't exit so the rest below can happen.
 wget -qO wo wops.cc && ( sudo bash wo --force )
 
+# You don't have to do sudo so.
+echo -e "alias wo='sudo -E wo'" >> "$HOME/.bashrc" && source "$HOME/.bashrc"
+
 echo "Setting dashboard to :666 with no username/password..."
 
 # Setup WordOps
