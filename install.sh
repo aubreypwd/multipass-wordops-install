@@ -30,13 +30,15 @@ echo "Installing WordOps..."
 # Yes, run bash wo in a sub-shell so it won't exit so the rest below can happen.
 wget -qO wo wops.cc && ( sudo bash wo --force )
 
-echo "Setting dashboard to http://$(hostname -I | awk '{print $1}'):666 with no admin/password..."
+IP=$(hostname -I | awk '{print $1}')
+
+echo "Setting dashboard to http://$IP:666 with no admin/password..."
 
 # Setup WordOps
 bash -l # autocomplete
 
 # We have to create a site for all the below to work.
-( sudo wo site create --html default )
+( sudo wo site create --html wordops )
 
 echo "Securing :666 with admin:password..."
 
@@ -51,3 +53,5 @@ echo "Installing stacks..."
 ( sudo wo stack install --utils )
 
 echo "Done"
+echo "- Add $IP wordops to host's /etc/hosts"
+echo "- Then goto http://wordops/:666 or http://default/"
