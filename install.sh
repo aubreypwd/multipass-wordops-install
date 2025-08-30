@@ -30,15 +30,13 @@ echo "Installing WordOps..."
 # Yes, run bash wo in a sub-shell so it won't exit so the rest below can happen.
 wget -qO wo wops.cc && ( sudo bash wo --force )
 
-IP=$(hostname -I | awk '{print $1}')
-
-echo "Setting dashboard to http://$IP:666 with no admin/password..."
+echo "Setting dashboard to :666 with no admin/password..."
 
 # Setup WordOps
 bash -l # autocomplete
 
 # We have to create a site for all the below to work.
-( sudo wo site create --html wordops )
+( sudo wo site create --wp wordops )
 
 echo "Securing :666 with admin:password..."
 
@@ -47,11 +45,6 @@ echo "Securing :666 with admin:password..."
 
 echo "Installing stacks..."
 
-( sudo wo stack install --dashboard ) # Install the dashboard.
-( sudo wo stack install --adminer )
-( sudo wo stack install --wpcli )
-( sudo wo stack install --utils )
+( sudo wo stack install --all ) # Install all the stacks.
 
 echo "Done"
-echo "- Add $IP wordops to host's /etc/hosts"
-echo "- Then goto http://wordops/:666 or http://default/"
