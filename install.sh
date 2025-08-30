@@ -28,11 +28,12 @@ sudo systemctl restart smbd
 echo "Installing WordOps..."
 
 # Yes, run bash wo in a sub-shell so it won't exit so the rest below can happen.
-sudo wget -qO wo wops.cc && ( sudo bash wo --force )
+wget -qO wo wops.cc && ( sudo bash wo --force )
 
 echo "Setting dashboard to :666 with no username/password..."
 
 # Setup WordOps
+bash -l # autocomplete
 sudo wo secure --auth '' '' # Do not require username/password for dashboard.
 sudo wo secure --port 666 # Set port to easy to remember 666.
 
