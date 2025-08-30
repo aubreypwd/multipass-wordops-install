@@ -33,7 +33,7 @@ wget -qO wo wops.cc && ( sudo bash wo --force )
 # You don't have to do sudo so.
 echo -e "alias wo='sudo -E wo'" >> "$HOME/.bashrc" && source "$HOME/.bashrc"
 
-echo "Setting dashboard to :666 with no username/password..."
+echo "Setting dashboard to :666 with no admin/password..."
 
 # Setup WordOps
 bash -l # autocomplete
