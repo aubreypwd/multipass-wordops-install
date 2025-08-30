@@ -27,7 +27,10 @@ sudo systemctl restart smbd
 
 echo "Installing WordOps..."
 
-sudo wget -qO wo wops.cc && sudo bash wo --force
+# Yes, run bash wo in a sub-shell so it won't exit so the rest below can happen.
+sudo wget -qO wo wops.cc && ( sudo bash wo --force )
+
+sudo wo site create wordops --wp # Start the initiation process by creating a default http://wordops site.
 
 # Setup WordOps
 sudo wo secure --auth '' '' # Do not require username/password for dashboard.
