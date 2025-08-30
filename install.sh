@@ -34,13 +34,11 @@ echo "Setting dashboard to :666 with no username/password..."
 
 # Setup WordOps
 bash -l # autocomplete
+
+# De-secure for local development.
 sudo wo secure --auth '' '' # Do not require username/password for dashboard.
 sudo wo secure --port 666 # Set port to easy to remember 666.
 
 sudo systemctl restart nginx
-
-echo "Creating default site..."
-
-sudo wo site create default --wp # Start the initiation process by creating a default http://wordops site.
 
 echo "Done"
