@@ -35,12 +35,17 @@ echo "Setting dashboard to http://$(hostname -I | awk '{print $1}'):666 with no 
 # Setup WordOps
 bash -l # autocomplete
 
-# De-secure for local development.
+# We have to create a site for all the below to work.
+( sudo wo site create --html default )
+
+echo "Securing :666 with admin:password..."
+
 ( sudo wo secure --auth 'admin' 'password' ) # Simple username/password.
 ( sudo wo secure --port 666 ) # Set port to easy to remember 666.
-( sudo wo stack install --dashboard ) # Install the dashboard.
 
-# Install stacks...
+echo "Installing stacks..."
+
+( sudo wo stack install --dashboard ) # Install the dashboard.
 ( sudo wo stack install --adminer )
 ( sudo wo stack install --wpcli )
 ( sudo wo stack install --utils )
