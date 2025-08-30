@@ -1,13 +1,6 @@
 #!/bin/bash
 
-# Exit immediately if a command fails
-set -e
-
-# 1. Install WordOps (force reinstall)
-sudo wget -qO wo wops.cc && sudo bash wo --force
-
-# 2. Install Samba so you can mount and expose /var/www for live editng.
-sudo apt install -y samba
+sudo apt install -y samba # 2. Install Samba so you can mount and expose /var/www for live editng.
 
 # 4. Add Samba share config
 sudo tee -a /etc/samba/smb.conf > /dev/null <<EOF
@@ -22,6 +15,8 @@ sudo tee -a /etc/samba/smb.conf > /dev/null <<EOF
 EOF
 
 sudo systemctl restart smbd
+
+sudo wget -qO wo wops.cc && sudo bash wo --force # 1. Install WordOps (force reinstall)
 
 # Setup WordOps
 sudo wo secure --auth '' '' # Do not require username/password for dashboard.
