@@ -30,16 +30,19 @@ echo "Installing WordOps..."
 # Yes, run bash wo in a sub-shell so it won't exit so the rest below can happen.
 wget -qO wo wops.cc && ( sudo bash wo --force )
 
-# You don't have to do sudo so.
-echo -e "alias wo='sudo -E wo'" >> "$HOME/.bashrc" && source "$HOME/.bashrc"
-
-echo "Setting dashboard to :666 with no admin/password..."
+echo "Setting dashboard to http://$(hostname -I | awk '{print $1}'):666 with no admin/password..."
 
 # Setup WordOps
 bash -l # autocomplete
 
 # De-secure for local development.
-sudo wo secure --auth 'admin' 'password' # Simple username/password.
-sudo wo secure --port 666 # Set port to easy to remember 666.
+( sudo wo secure --auth 'admin' 'password' ) # Simple username/password.
+( sudo wo secure --port 666 ) # Set port to easy to remember 666.
+( sudo wo stack install --dashboard ) # Install the dashboard.
+
+# Install stacks...
+( sudo wo stack install --adminer )
+( sudo wo stack install --wpcli )
+( sudo wo stack install --utils )
 
 echo "Done"
