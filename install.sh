@@ -27,7 +27,7 @@ sudo systemctl restart smbd
 
 echo "Installing WordOps..."
 
-sudo wget -qO wo wops.cc && sudo bash wo
+sudo wget -qO wo wops.cc && sudo bash wo --force
 
 # Setup WordOps
 sudo wo secure --auth '' '' # Do not require username/password for dashboard.
