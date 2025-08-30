@@ -39,9 +39,7 @@ echo "Setting dashboard to :666 with no username/password..."
 bash -l # autocomplete
 
 # De-secure for local development.
-sudo wo secure --auth '' '' # Do not require username/password for dashboard.
+sudo wo secure --auth 'admin' 'password' # Simple username/password.
 sudo wo secure --port 666 # Set port to easy to remember 666.
-
-sudo systemctl restart nginx
 
 echo "Done"
